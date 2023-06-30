@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 
 
@@ -16,6 +16,7 @@ export default function RegistrationScreen() {
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   
   return (
     <View style={styles.container}>
@@ -81,13 +82,16 @@ export default function RegistrationScreen() {
                   backgroundColor: isFocusedPassword ? "#FFFFFF" : "#F6F6F6",
                   color: "#212121",
                 }}
-                placeholder='Пароль'                
+                placeholder='Пароль'
+                secureTextEntry={isVisiblePassword}
                 onFocus={() => setIsFocusedPassword(true)}
                 onBlur={() => setIsFocusedPassword(false)}
               />
               <TouchableOpacity
                 style={styles.btnToggle}
                 activeOpacity={0.8}
+                onPressIn={()=>setIsVisiblePassword(true)}
+                onPressOut={()=>setIsVisiblePassword(false)}
               >
                 <Text style={styles.btnToggleText}>Показати</Text>
               </TouchableOpacity>
