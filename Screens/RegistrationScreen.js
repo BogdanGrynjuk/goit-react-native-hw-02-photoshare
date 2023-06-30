@@ -83,7 +83,7 @@ export default function RegistrationScreen() {
                   color: "#212121",
                 }}
                 placeholder='Пароль'
-                secureTextEntry={isVisiblePassword}
+                secureTextEntry={!isVisiblePassword}
                 onFocus={() => setIsFocusedPassword(true)}
                 onBlur={() => setIsFocusedPassword(false)}
               />
