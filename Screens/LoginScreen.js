@@ -10,10 +10,8 @@ import {
   TouchableOpacity
 } from "react-native";
 
-
-export default function RegistrationScreen() {
-
-  const [isFocusedLogin, setIsFocusedLogin] = useState(false);
+export default function LoginScreen() {
+  
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
   
@@ -26,38 +24,12 @@ export default function RegistrationScreen() {
       >
         {/*  */}
 
-        <View style={styles.wrapper}>
-
-          <View style={styles.avatar}>
-            <TouchableOpacity
-              style={styles.avatarBtn}
-              activeOpacity={0.8}
-            >
-              <Image source={require("../assets/images/icon-add.png")}
-              >
-              </Image>
-            </TouchableOpacity>
-          </View>
-           
+        <View style={styles.wrapper}>          
           <View>
-            <Text style={styles.formTitle}>Реєстрація</Text>
+            <Text style={styles.formTitle}>Увійти</Text>
           </View>
           {/* form */}
-          <View style={styles.form}>
-            {/* input login */}
-            <View>
-              <TextInput
-                style={{
-                  ...styles.input,
-                  borderColor: isFocusedLogin ? "#FF6C00" : "#E8E8E8",
-                  backgroundColor: isFocusedLogin ? '#FFFFFF' : "#F6F6F6",
-                  color: "#212121",
-                }}
-                placeholder='Логін'
-                onFocus={() => { setIsFocusedLogin(true) }}
-                onBlur={() => setIsFocusedLogin(false)}
-              />
-            </View>
+          <View style={styles.form}>           
             {/* input email */}
             <View>
               <TextInput
@@ -81,7 +53,8 @@ export default function RegistrationScreen() {
                   backgroundColor: isFocusedPassword ? "#FFFFFF" : "#F6F6F6",
                   color: "#212121",
                 }}
-                placeholder='Пароль'                
+                placeholder='Пароль'
+                secureTextEntry={true}
                 onFocus={() => setIsFocusedPassword(true)}
                 onBlur={() => setIsFocusedPassword(false)}
               />
@@ -97,7 +70,7 @@ export default function RegistrationScreen() {
               style={styles.btn}
               activeOpacity={0.8}             
             >
-              <Text style={styles.btnTitle}>Зареєструватись</Text>
+              <Text style={styles.btnTitle}>Увійти</Text>
             </TouchableOpacity>
             {/* link */}
             <TouchableOpacity
@@ -105,11 +78,11 @@ export default function RegistrationScreen() {
               activeOpacity={0.8}
             >
               <Text style={styles.linkText}>
-                Вже є акаунт? Увійти
+                Немає акаунту? Зареєструватися
               </Text>
             </TouchableOpacity>
           </View>
-
+          
         </View>
         
       </ImageBackground>
@@ -131,46 +104,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 
-  wrapper: {
-    position: "relative",    
+  wrapper: {  
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    backgroundColor: "#ffffff"
-  },
-
-  avatar: {
-    position: "absolute",
-    top: 0,
-    left: '50%',
-    width: 120,
-    height: 120,
-    marginLeft: -60,
-    marginTop: -60,
-    backgroundColor: '#F6F6F6',
-    borderRadius: 16,
-  },
-
-  avatarBtn: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-    bottom: 0,
-    right: 0,
-    width: 25,
-    height: 25,
-    marginBottom: 12.5,
-    marginRight: -12.5,
-    color: "#FF6C00",
     backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#FF6C00",
-    borderRadius: 15,    
   },
 
   formTitle: {
-    marginTop: 92,
+    marginTop: 32,
     marginBottom: 33,
     fontSize: 30,
     fontFamily: "Roboto-Medium",
@@ -226,7 +167,7 @@ const styles = StyleSheet.create({
 
   link: {
     alignItems: "center",
-    marginBottom: 45,
+    marginBottom: 111,
   },
 
   linkText: {
